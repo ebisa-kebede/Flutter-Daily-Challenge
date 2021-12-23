@@ -1,66 +1,87 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Everything'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Starts Here:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text('Telegram'),
+          leading: const Icon(Icons.menu),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {},
+                child: const Icon(
+                  Icons.search,
+                  size: 26.0,
+                ),
+              ),
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'here',
-        child: const Icon(Icons.add),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  child: Icon(Icons.person),
+                  width: 100,
+                  height: 50,
+                ),
+                Column(
+                  children: const [
+                    Text(
+                      "Ebisa Kebede",
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    Text("hi ebba.........."),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: Icon(Icons.person),
+                  width: 100,
+                  height: 50,
+                ),
+                Column(
+                  children: const [
+                    Text(
+                      "Ebisa Kebede",
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    Text("hi ebba.........."),
+                  ],
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Container(
+                  child: Icon(Icons.person),
+                  width: 100,
+                  height: 50,
+                ),
+                Column(
+                  children: const [
+                    Text(
+                      "Ebisa Kebede",
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                    Text("hi ebba.........."),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

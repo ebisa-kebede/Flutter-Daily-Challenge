@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Telegram"),
+          title: const Text("Class"),
           backgroundColor: Colors.lightBlue,
           leading: const Icon(
             Icons.menu,
@@ -26,45 +26,130 @@ class MyApp extends StatelessWidget {
             )
           ],
         ),
-        body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
-          crossAxisCount: 1,
-          childAspectRatio: 3 / 0.5,
-
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
               children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/images/test.png"),
+                const SizedBox(
+                  width: 10,
                 ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 50,
-                  width: 100,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Ebisa Kebede"),
-                      Text("Ebisa Kebede"),
-                    ],
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    color: Colors.red,
                   ),
-                )
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    color: Colors.yellow,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    color: Colors.green,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
               ],
-            );
-          }),
-        ),
-        floatingActionButton: const FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.edit),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    color: Colors.blueAccent,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
