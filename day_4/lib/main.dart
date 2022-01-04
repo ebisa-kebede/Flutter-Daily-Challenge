@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './Checkbox.dart';
 
 void main() {
@@ -21,37 +22,49 @@ class MyApp extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     height: 50,
                   ),
-                  Text(
+                  const Text(
                     "Get's started",
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "Already have an account?",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 20,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Already have an account?",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 25,
+                        ),
+                      ),
+                      GestureDetector(
+                          child: Text("Signin",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.blue)),
+                          onTap: () {
+                            // do what you need to do when "Click here" gets clicked
+                          })
+                    ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
-                  Text(
+                  const Text(
                     "Full name",
                     style: TextStyle(
                       color: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Ebisa kebede',
