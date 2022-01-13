@@ -1,4 +1,4 @@
-# final_project
+# day_7
 
 A new Flutter project.
 
