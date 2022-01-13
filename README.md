@@ -9,4 +9,4 @@
 
 | Day 4 |
 |:-:|
-| <img src ="https://user-images.githubusercontent.com/61195602/147977208-22983bdd-cc5c-4b3c-9b42-4da8992f5233.png" width="210" height="440"/> |!
+| <img src ="https://user-images.githubusercontent.com/61195602/147977208-22983bdd-cc5c-4b3c-9b42-4da8992f5233.png" width="210" height="430"/> |!
