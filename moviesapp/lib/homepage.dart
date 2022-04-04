@@ -116,6 +116,9 @@ class HomePage extends StatelessWidget {
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => UserPage(
                         position: index,
+                        urlimage: "https://image.tmdb.org/t/p/w500" +
+                            snapshot.data[index]['poster_path'].toString(),
+                        title: snapshot.data[index]["original_title"],
                       ),
                     )),
                   );

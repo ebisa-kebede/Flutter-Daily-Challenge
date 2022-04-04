@@ -4,6 +4,8 @@ import 'dart:convert';
 
 class UserPage extends StatelessWidget {
   final int position;
+  final String urlimage;
+  final String title;
 
   fetchMovies() async {
     var url;
@@ -12,80 +14,93 @@ class UserPage extends StatelessWidget {
     return json.decode(url.body)['results'];
   }
 
-  const UserPage({Key key, @required this.position}) : super(key: key);
+  const UserPage(
+      {Key key,
+      @required this.position,
+      @required this.urlimage,
+      @required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Color(0xff191826),
-        body: FutureBuilder(
-          future: fetchMovies(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error),
-              );
-            }
-
-            if (snapshot.hasData) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  new Expanded(
-                    child: new Image.network(
-                      "https://image.tmdb.org/t/p/w500" +
-                          snapshot.data[position]['poster_path'],
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        snapshot.data[position]["original_title"],
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                expandedHeight: 350.0,
+                floating: false,
+                pinned: true,
+                backgroundColor: Color(0xff191826),
+                flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: Text(title,
                         style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    background: Image.network(
+                      urlimage,
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            ];
+          },
+          body: FutureBuilder(
+            future: fetchMovies(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error),
+                );
+              }
+
+              if (snapshot.hasData) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.red,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                          snapshot.data[position]["vote_average"].toString(),
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.red,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text(
-                            snapshot.data[position]["vote_average"].toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    snapshot.data[position]["overview"],
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 17,
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 5),
+                    Text(
+                      snapshot.data[position]["overview"],
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
               );
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
+            },
+          ),
         ),
       );
 }
+
+//  backgroundColor: Color(0xff191826),
+//         body:
