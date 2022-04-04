@@ -118,7 +118,10 @@ class HomePage extends StatelessWidget {
                         position: index,
                         urlimage: "https://image.tmdb.org/t/p/w500" +
                             snapshot.data[index]['poster_path'].toString(),
-                        title: snapshot.data[index]["original_title"],
+                        title:
+                            snapshot.data[index]["original_title"].toString(),
+                        rate: snapshot.data[index]["vote_average"].toString(),
+                        overview: snapshot.data[index]["overview"].toString(),
                       ),
                     )),
                   );
